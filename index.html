@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Clara 🎂</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  PANTALLA: PIN de acceso general (guard inicial)   -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div id="screen-unlock" class="screen active">
+    <div class="pin-card">
+      <h1>🔐 Acceso privado</h1>
+      <p>Solo para Clara 💕</p>
+      <input id="unlock-pin" type="password" maxlength="4" inputmode="numeric" placeholder="····"/>
+      <button onclick="Router.tryUnlock()">Entrar</button>
+      <p id="unlock-error" class="error hidden">PIN incorrecto 🙈</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  PANTALLA: FASE 1 — Timeline + Countdown           -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div id="screen-phase1" class="screen hidden">
+    <!-- HERO -->
+    <section class="hero parallax" id="hero">
+      <div class="hero-text">
+        <h1>Felicitaats,<br/><span class="name">Clara</span> 🎂</h1>
+        <p>Un recorregut pels nostres moments preferiits</p>
+        <button class="btn-scroll" onclick="scrollToTimeline()">▼ Veure la nostra historia</button>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="timeline-section">
+      <div id="timeline-entries"></div><!-- Poblado por phase1.js -->
+    </section>
+
+    <!-- COUNTDOWN + TRAILER -->
+    <section id="countdown-section" class="countdown-section">
+      <h2>Algo gran s'apropa…</h2>
+      <div id="countdown-timer" class="countdown-timer">
+        <div><span id="cd-days">--</span><label>Dies</label></div>
+        <div><span id="cd-hours">--</span><label>Hores</label></div>
+        <div><span id="cd-mins">--</span><label>Minuts</label></div>
+        <div><span id="cd-secs">--</span><label>Segons</label></div>
+      </div>
+      <!-- Pega aquí el embed de tu vídeo o usa <video src="..."> -->
+      <!-- <div class="video-wrapper">
+        <iframe id="trailer-video"
+          src="https://www.youtube.com/embed/TU_VIDEO_ID"
+          frameborder="0" allowfullscreen>
+        </iframe>
+      </div> -->
+    </section>
+
+    <!-- BOTÓN TRAMPA -->
+    <section id="trap-section" class="trap-section">
+      <button class="btn-trap" onclick="Phase1.showTrapModal()">
+        🔓 ¿Accés anticipat al dia 9?
+      </button>
+    </section>
+
+    <!-- MODAL TRAMPA -->
+    <div id="trap-modal" class="modal hidden">
+      <div class="modal-box trap">
+        <h2>🚨 ¡TRAMPOSA DESCOBERTA! 🚨</h2>
+        <p>Hauràs d'esperar al dia 9...<br/> </p>
+        <button onclick="Phase1.closeTrapModal()">Tancar (de vergonya)</button>
+      </div>
+    </div>
+    <div id="trap-pin-modal" class="modal hidden">
+      <div class="modal-box">
+        <h2>🔐 Introdueix el PIN secret</h2>
+        <input id="trap-pin-input" type="password" maxlength="4" inputmode="numeric" placeholder="····"/>
+        <button onclick="Phase1.checkTrapPin()">Verificar</button>
+        <p id="trap-pin-error" class="error hidden">Incorrecte</p>
+        <button class="btn-secondary" onclick="Phase1.closeTrapPinModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  PANTALLA: FASE 2 — Dashboard de retos             -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div id="screen-phase2" class="screen hidden">
+    <div id="phase2-dashboard">
+      <h1>🗓️ Semana de Retos</h1>
+      <p class="subtitle">Cada día, un PIN. Cada reto, un premio 🎁</p>
+      <div id="day-buttons" class="day-grid"></div><!-- Poblado por phase2.js -->
+    </div>
+
+    <!-- Modal PIN diario -->
+    <div id="day-pin-modal" class="modal hidden">
+      <div class="modal-box">
+        <h2 id="day-pin-title">🔐 PIN del Día X</h2>
+        <input id="day-pin-input" type="password" maxlength="4" inputmode="numeric" placeholder="····"/>
+        <button onclick="Phase2.checkDayPin()">Confirmar</button>
+        <p id="day-pin-error" class="error hidden">PIN incorrecto 😬</p>
+        <button class="btn-secondary" onclick="Phase2.closeDayModal()">Volver</button>
+      </div>
+    </div>
+
+    <!-- Contenedor minijuego activo -->
+    <div id="minigame-container" class="hidden"></div>
+
+    <!-- Pantalla de ruleta -->
+    <div id="roulette-screen" class="hidden">
+      <h2>🎡 ¡Gira la ruleta y descubre tu premio!</h2>
+      <div class="roulette-wrapper">
+        <div class="roulette-pointer">▼</div>
+        <canvas id="roulette-canvas" width="400" height="400"></canvas>
+      </div>
+      <button id="spin-btn" onclick="Roulette.spin()">🎰 ¡Girar!</button>
+      <div id="prize-result" class="prize-result hidden"></div>
+      <button class="btn-secondary" onclick="Phase2.backToDashboard()" style="margin-top:1rem">← Volver al inicio</button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS (orden importa) -->
+  <script src="js/config.js"></script>
+  <script src="js/telegram.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/phase1.js"></script>
+  <script src="js/roulette.js"></script>
+  <script src="js/minigames/puzzle.js"></script>
+  <script src="js/minigames/memory.js"></script>
+  <script src="js/minigames/differences.js"></script>
+  <script src="js/minigames/simon.js"></script>
+  <script src="js/minigames/trivia.js"></script>
+  <script src="js/phase2.js"></script>
+  <script src="js/router.js"></script><!-- última llamada para init -->
+  <script>Router.init();</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+/* ───── RESET & BASE ───── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pink:    #ff6b9d;
+  --pink-d:  #e91e63;
+  --gold:    #ffd93d;
+  --green:   #6bcb77;
+  --bg:      #1a1a2e;
+  --surface: #16213e;
+  --text:    #f0f0f0;
+  --radius:  12px;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ───── SCREENS ───── */
+.screen { display: none; }
+.screen.active, .screen:not(.hidden) { display: block; }
+.hidden { display: none !important; }
+
+/* ───── PIN CARD ───── */
+.pin-card {
+  max-width: 360px; margin: 15vh auto; padding: 2.5rem;
+  background: var(--surface); border-radius: var(--radius);
+  text-align: center; box-shadow: 0 8px 32px rgba(255,107,157,.3);
+}
+.pin-card h1 { font-size: 2rem; margin-bottom: .5rem; }
+.pin-card input {
+  width: 100%; padding: 14px; font-size: 1.6rem; text-align: center;
+  border: 2px solid var(--pink); border-radius: var(--radius);
+  background: var(--bg); color: var(--text); margin: 1rem 0; letter-spacing: .5rem;
+}
+.pin-card button, button {
+  background: var(--pink); color: #fff; border: none;
+  padding: 12px 28px; border-radius: var(--radius);
+  font-size: 1rem; cursor: pointer; transition: transform .1s, background .2s;
+}
+button:hover { background: var(--pink-d); transform: scale(1.03); }
+.btn-secondary {
+  background: transparent; border: 2px solid var(--pink); color: var(--pink);
+}
+.btn-secondary:hover { background: rgba(255,107,157,.1); }
+.error { color: #ff5252; font-size: .9rem; margin-top: .5rem; }
+
+/* ───── HERO PARALLAX ───── */
+.hero {
+  height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: url('assets/photos/hero_bg.jpg') center/cover no-repeat fixed;
+  position: relative; text-align: center;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(26,26,46,.65);
+}
+.hero-text { position: relative; z-index: 1; }
+.hero-text h1 { font-size: clamp(2rem, 6vw, 4rem); line-height: 1.2; }
+.hero-text .name { color: var(--pink); }
+.btn-scroll {
+  margin-top: 1.5rem; background: transparent;
+  border: 2px solid var(--gold); color: var(--gold);
+  animation: bounce-arrow 1.5s infinite;
+}
+@keyframes bounce-arrow {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+/* ───── TIMELINE ───── */
+.timeline-section { padding: 4rem 1rem; max-width: 900px; margin: auto; }
+.timeline-entry {
+  display: flex; margin-bottom: 3rem;
+  opacity: 0; transform: translateX(-40px); transition: all .6s ease;
+}
+.timeline-entry.right  { flex-direction: row-reverse; transform: translateX(40px); }
+.timeline-entry.visible { opacity: 1; transform: translateX(0); }
+.timeline-card {
+  background: var(--surface); border-radius: var(--radius);
+  overflow: hidden; max-width: 420px; width: 100%;
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
+}
+.timeline-card img { width: 100%; height: 220px; object-fit: cover; }
+.timeline-info { padding: 1rem; }
+.timeline-date { color: var(--pink); font-weight: 700; font-size: .85rem; }
+
+/* ───── COUNTDOWN ───── */
+.countdown-section {
+  text-align: center; padding: 4rem 1rem;
+  background: linear-gradient(135deg, var(--surface), var(--bg));
+}
+.countdown-section h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+.countdown-timer {
+  display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem;
+}
+.countdown-timer > div {
+  background: var(--surface); padding: 1rem 1.5rem; border-radius: var(--radius);
+  min-width: 80px; border: 2px solid var(--pink);
+}
+.countdown-timer span { font-size: 2.5rem; font-weight: 800; color: var(--gold); display: block; }
+.countdown-timer label { font-size: .8rem; color: #aaa; }
+.video-wrapper {
+  max-width: 640px; margin: 0 auto; border-radius: var(--radius); overflow: hidden;
+  aspect-ratio: 16/9; background: #000;
+}
+.video-wrapper iframe, .video-wrapper video { width: 100%; height: 100%; }
+
+/* ───── TRAMPA ───── */
+.trap-section { text-align: center; padding: 3rem 1rem; }
+.btn-trap {
+  background: transparent; border: 2px dashed #aaa; color: #aaa; font-size: .85rem;
+  padding: 8px 20px;
+}
+.btn-trap:hover { border-color: var(--pink); color: var(--pink); background: transparent; }
+
+/* ───── MODALES ───── */
+.modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,.8);
+  display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.modal-box {
+  background: var(--surface); padding: 2rem; border-radius: var(--radius);
+  text-align: center; max-width: 380px; width: 90%;
+  animation: popIn .3s ease;
+}
+.modal-box.trap {
+  background: #c62828; border: 3px solid #ff1744;
+  animation: shake .4s ease, popIn .3s ease;
+}
+.modal-box h2 { margin-bottom: 1rem; }
+.modal-box input { width: 100%; margin: 1rem 0; padding: 12px; font-size: 1.4rem;
+  text-align: center; letter-spacing: .4rem; border-radius: 8px;
+  border: 2px solid var(--pink); background: var(--bg); color: var(--text); }
+
+@keyframes popIn   { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes shake   {
+  0%,100% { transform: translateX(0); }
+  20%,60% { transform: translateX(-8px); }
+  40%,80% { transform: translateX(8px); }
+}
+
+/* ───── FASE 2 DASHBOARD ───── */
+#phase2-dashboard { max-width: 600px; margin: 0 auto; padding: 2rem 1rem; text-align: center; }
+#phase2-dashboard h1 { font-size: 2rem; margin-bottom: .5rem; }
+.subtitle { color: #aaa; margin-bottom: 2rem; }
+.day-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; }
+.day-btn {
+  background: var(--surface); border: 2px solid var(--pink);
+  padding: 1.2rem .8rem; border-radius: var(--radius); cursor: pointer;
+  transition: transform .15s, box-shadow .15s; display: flex;
+  flex-direction: column; align-items: center; gap: .3rem;
+}
+.day-btn:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(255,107,157,.4); }
+.day-btn.done  { border-color: var(--green); background: rgba(107,203,119,.1); }
+.day-num { font-weight: 800; font-size: 1.1rem; }
+.day-date { font-size: .8rem; color: #aaa; }
+
+/* ───── RULETA ───── */
+#roulette-screen { text-align: center; padding: 2rem 1rem; }
+.roulette-wrapper { position: relative; display: inline-block; margin: 1rem auto; }
+.roulette-pointer {
+  position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
+  font-size: 2rem; color: var(--gold); z-index: 10; filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
+}
+#roulette-canvas { border-radius: 50%; box-shadow: 0 0 30px rgba(255,107,157,.5); }
+#spin-btn { margin-top: 1.5rem; font-size: 1.2rem; padding: 14px 40px; }
+.prize-result {
+  margin-top: 1.5rem; font-size: 1.4rem; font-weight: 700;
+  color: var(--gold); padding: 1rem; background: var(--surface);
+  border-radius: var(--radius); display: inline-block;
+}
+@keyframes bounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+.bounce { animation: bounce .5s ease; }
+
+/* ───── MINIJUEGOS ───── */
+.game-header { text-align: center; padding: 1.5rem 1rem 1rem; }
+.game-header h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+#minigame-container { padding: 1rem; }
+
+/* Memorama */
+.mem-card {
+  aspect-ratio: 1; perspective: 600px; cursor: pointer; border-radius: 8px;
+}
+.mem-inner {
+  width: 100%; height: 100%; position: relative;
+  transform-style: preserve-3d; transition: transform .5s;
+}
+.mem-card.flipped .mem-inner, .mem-card.matched .mem-inner { transform: rotateY(180deg); }
+.mem-front, .mem-back {
+  position: absolute; inset: 0; backface-visibility: hidden;
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; font-size: 2rem;
+}
+.mem-front { background: var(--pink); }
+.mem-back  { background: var(--surface); transform: rotateY(180deg); overflow: hidden; }
+.mem-card.matched .mem-front { border: 3px solid var(--green); }
+
+/* Trivia */
+.trivia-card {
+  max-width: 500px; margin: 1rem auto; background: var(--surface);
+  border-radius: var(--radius); padding: 2rem; text-align: center;
+}
+.trivia-num { color: #aaa; font-size: .85rem; margin-bottom: .5rem; }
+.trivia-card h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+
+/* ───── RESPONSIVE ───── */
+@media (max-width: 480px) {
+  .countdown-timer { gap: .6rem; }
+  .countdown-timer > div { min-width: 60px; padding: .7rem; }
+  .countdown-timer span { font-size: 1.8rem; }
+  .timeline-entry, .timeline-entry.right { flex-direction: column; }
+  #roulette-canvas { width: 300px !important; height: 300px !important; }
+}
+
+@keyframes fadeOut { to { opacity: 0; } }
