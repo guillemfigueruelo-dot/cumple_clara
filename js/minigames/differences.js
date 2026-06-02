@@ -8,7 +8,7 @@ const Differences = {
     // Gafas de sol
     { x: 45, y: 85, r: 7 }
   ],
-  found: [],
+  found: [], 
 
   init(container, onWin) {
     this.onWin = onWin; this.found = [];
