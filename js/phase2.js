@@ -1,11 +1,11 @@
 const Phase2 = {
   currentDay: null,
   DAYS: {
-    1: { date: "9 jun",  label: "Día 1", pin: "day1", game: "puzzle"      },
-    2: { date: "10 jun", label: "Día 2", pin: "day2", game: "memory"      },
-    3: { date: "11 jun", label: "Día 3", pin: "day3", game: "differences" },
-    4: { date: "12 jun", label: "Día 4", pin: "day4", game: "simon"       },
-    5: { date: "13 jun", label: "Día 5", pin: "day5", game: "trivia"      },
+    1: { date: "9 jun",  label: "Dia 1", pin: "day1", game: "puzzle"      },
+    2: { date: "10 jun", label: "Dia 2", pin: "day2", game: "memory"      },
+    3: { date: "11 jun", label: "Dia 3", pin: "day3", game: "differences" },
+    4: { date: "12 jun", label: "Dia 4", pin: "day4", game: "simon"       },
+    5: { date: "13 jun", label: "Dia 5", pin: "day5", game: "trivia"      },
   },
 
   init() {

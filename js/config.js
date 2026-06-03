@@ -40,12 +40,32 @@ const CONFIG = {
 
   // --- TRIVIA (Día 5) ---
   TRIVIA: [
-    { q: "Quina peli vam veure la primera vegada que ens vam veure?",   a: "Expediente Warren" },
-    { q: "Quin és el meu menjar preferit?", a: "Espaguetis a la Carbonara" },
-    { q: "Quan vam quedar per primer cop?",                 a: "21 Sept" },
-    { q: "A quina disco ens vam conéixer?",    a: "Wolf" },
-    { q: "Quina és la meva sèrie preferida?",               a: "Prison Break" },  // ajusta
-  ],
+  {
+    q: "Quina peli vam veure la primera vegada que ens vam veure?",
+    options: ["Los Goonies", "Expediente Warren", "IT 2"],
+    a: 1  // índice de la opción correcta (0 = "La Pepita")
+  },
+  {
+    q: "Quin és el meu menjar preferit?",
+    options: ["Lasaña", "Arròs amb tomàquet", "Espaguetis a la Carbonara"],
+    a: 2
+  },
+  {
+    q: "Quan vam quedar per primer cop?",
+    options: ["21 Sept", "28 Sept", "20 Sept"],
+    a: 0  // "Barcelona"
+  },
+  {
+    q: "A quina disco ens vam conéixer?",
+    options: ["Wolf", "Legendfest", "Carlos Kirk Music"],
+    a: 0  // "Pasta carbonara"
+  },
+  {
+    q: "Quina és la meva sèrie preferida?",
+    options: ["Vis a Vis", "The Boys", "Prison Break", "La Casa de Papel"],
+    a: 2  // "30"
+  },
+],
 };
 
 // ⚠️ SOLO PARA PRUEBAS — pon null antes de dárselo a Clara

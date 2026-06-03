@@ -6,7 +6,11 @@ const Differences = {
     // Pantalón
     { x: 10, y: 97, r: 7 },
     // Gafas de sol
-    { x: 45, y: 85, r: 7 }
+    { x: 45, y: 85, r: 7 },
+    // Brazalete
+    { x: 75, y: 80, r: 10 },
+    // Reloj
+    { x: 94, y: 81, r: 5 }
   ],
   found: [], 
 

@@ -1,7 +1,7 @@
 const Simon = {
   PHOTOS: [
-    "assets/photos/simon1.jpg","assets/photos/simon2.jpg",
-    "assets/photos/simon3.jpg","assets/photos/simon4.jpg",
+    "assets/photos/simon1.jpeg","assets/photos/simon2.jpeg",
+    "assets/photos/simon3.jpeg","assets/photos/simon4.jpeg",
   ],
   COLORS: ["#ff6b9d","#ffd93d","#6bcb77","#4d96ff"],
   sequence: [], playerSeq: [], level: 0, onWin: null,
