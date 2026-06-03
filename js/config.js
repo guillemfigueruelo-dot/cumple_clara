@@ -69,4 +69,4 @@ const CONFIG = {
 };
 
 // ⚠️ SOLO PARA PRUEBAS — pon null antes de dárselo a Clara
-CONFIG.DEBUG_PHASE = 2; // 1 = Fase 1, 2 = Fase 2, null = comportamiento real
+CONFIG.DEBUG_PHASE = null; // 1 = Fase 1, 2 = Fase 2, null = comportamiento real
