@@ -1,6 +1,6 @@
 const Router = {
   PHASE1_DATE: new Date("2026-06-04T00:00:00"),
-  PHASE2_DATE: new Date("2026-06-09T00:00:00"),
+  PHASE2_DATE: new Date("2026-06-09T22:00:00"),
 
   init() {
     const unlocked = sessionStorage.getItem("unlocked");
