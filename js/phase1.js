@@ -41,7 +41,7 @@ const Phase1 = {
   },
 
   startCountdown() {
-    const target = new Date("2026-06-09T00:00:00");
+    const target = new Date("2026-06-09T22:00:00");
     this.countdownInterval = setInterval(() => {
       const diff = target - new Date();
       if (diff <= 0) {
