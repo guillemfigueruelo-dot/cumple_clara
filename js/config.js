@@ -9,7 +9,7 @@ const CONFIG = {
   // --- PINs DIARIOS (Fase 2) ---
   PINS: {
     trap:  "0406",   // PIN trampa del botón "Acceso anticipado"
-    day1:  "1707",   // 28 de junio... o lo que quieras
+    day1:  "0406",   // 28 de junio... o lo que quieras
     day2:  "1109",
     day3:  "2026",
     day4:  "5465",
