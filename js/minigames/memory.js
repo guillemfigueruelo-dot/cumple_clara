@@ -7,9 +7,9 @@ const Memory = {
 
     // 6 parejas de fotos (12 cartas)
     const PHOTOS = [
-      "assets/photos/memory1.jpeg","assets/photos/memory2.jpeg",
-      "assets/photos/memory3.jpeg","assets/photos/memory4.jpeg",
-      "assets/photos/memory5.jpeg","assets/photos/memory6.jpeg",
+      "assets/photos/Memory1.jpeg","assets/photos/Memory2.jpeg",
+      "assets/photos/Memory3.jpeg","assets/photos/Memory4.jpeg",
+      "assets/photos/Memory5.jpeg","assets/photos/Memory6.jpeg",
     ];
     const cards = [...PHOTOS, ...PHOTOS].sort(() => Math.random() - 0.5);
 
