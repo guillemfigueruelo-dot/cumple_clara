@@ -74,7 +74,7 @@ const Simon = {
     }
 
     if (this.playerSeq.length === this.sequence.length) {
-      if (this.level >= 5) {
+      if (this.level >= 10) {
         setTimeout(() => { alert("🎉 ¡Simón dice que mereces tu premio!"); this.onWin(); }, 400);
       } else {
         document.getElementById("simon-msg").textContent = `✅ ¡Ronda ${this.level} superada!`;
